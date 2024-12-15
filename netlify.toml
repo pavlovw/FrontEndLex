@@ -6,3 +6,6 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[build.environment]
+PYTHON_VERSION = "3.12.1"
