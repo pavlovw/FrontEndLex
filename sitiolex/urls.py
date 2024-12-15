@@ -10,6 +10,6 @@ urlpatterns = [
     path('lex/nosotros/', include('apps.nosotros.urls')),
     path('lex/services/', include('apps.services.urls')),
     path('lex/ubicacion/', include('apps.ubicacion.urls')),
-    path('lex/', include('apps.home.urls')), 
+    path('', include('apps.home.urls')), 
 ]
 
