@@ -3,13 +3,7 @@ django-on-heroku==1.1.2
 gunicorn==23.0.0
 psycopg2-binary==2.9.10
 requests==2.32.3
-pytz==2024.2
-python-dateutil==2.9.0.post0
-pyyaml==6.0.2
 whitenoise==6.8.2
 argon2-cffi==23.1.0
 bcrypt==4.0.1
-pillow==10.4.0
-numpy==2.1.1
-pandas==2.2.3
-torch==2.4.1+cpu
+
