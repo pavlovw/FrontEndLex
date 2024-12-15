@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Estilos generales */
+:root {
+    --primary-color: #2D2F36;
+    --background-color: #f9f5f0;
+    --dark-color: #151515;
+    --white-color: #ffffff;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.heading-1 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 3rem;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    max-height: 7rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: transparent;
+    z-index: 1000;
+    transition: background-color 0.6s;
+}
+
+.navbar.scrolled {
+    background-color: var(--primary-color);
+}
+
+.navbar.scrolled .menu-logo,
+.navbar.scrolled .menu a,
+.navbar.scrolled .usuario a {
+    color: white;
+}
+
+.navbar.scrolled .btn-menu span {
+    color: white !important;
+}
+
+.menu-logo {
+    color: black;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.menu ul {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.usuario {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.usuario ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.menu li, .usuario li {
+    list-style: none;
+}
+
+.menu a, .usuario a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: black;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.menu a:hover::after, .usuario a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Altura del la linea */
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+/* MENU OVERLAY */
+#btn-menu {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 3rem !important; /* Ajuste para que el menú esté debajo del navbar */
+    left: 0;
+    width: 100%;
+    height: 0; 
+    background-color: var(--primary-color);
+    z-index: 999;
+    flex-direction: column;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+}
+
+.menu-overlay.open {
+    height: 50%; /* Menos de la mitad de la pantalla */
+}
+
+.menu-overlay ul {
+    list-style: none;
+    padding: 1rem;
+}
+
+.menu-overlay ul li {
+    margin: 10px 0;
+}
+
+.menu-overlay ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+}
+
+#btn-menu .menu-icon {
+    color: black;
+}
+
+#btn-menu .close-icon {
+    display: none;
+    color: white;
+    font-size: 2rem;
+}
+
+.menu-overlay .close-icon {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white !important;
+    font-size: 2rem !important;
+    cursor: pointer;
+}
+
+/* ********************************** */
+/*               FOOTER               */
+/* ********************************** */
+
+.footer {
+	background-color: var(--primary-color);
+    
+}
+
+.container-footer {
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	padding: 1rem;}
+
+.menu-footer {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr) 30rem;
+	gap: 3rem;
+	justify-items: center;
+}
+
+.title-footer {
+	font-weight: 600;
+	font-size: 1rem;
+	text-transform: uppercase;
+}
+
+.contact-info,
+.information,
+.my-account,
+.newsletter {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.contact-info ul,
+.information ul,
+.my-account ul {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.contact-info ul li,
+.information ul li,
+.my-account ul li {
+	list-style: none;
+	color: #fff;
+	font-size: 1rem;
+	font-weight: 300;
+}
+
+.information ul li a,
+.my-account ul li a {
+	text-decoration: none;
+	color: #fff;
+	font-weight: 300;
+}
+
+.information ul li a:hover,
+.my-account ul li a:hover {
+	color: var(--dark-color);
+}
+
+
+
+.copyright {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 2rem;
+	border-top: 1px solid white;
+}
+
+.copyright p {
+	font-weight: 400;
+	font-size: 1.4rem;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0 1rem;
+        background-color: var(--primary-color);
+    }
+
+    #btn-menu {
+        display: block;
+    }
+
+    .btn-menu span {
+        color: white !important;
+    }
+
+    .menu-logo {
+        color: white !important;
+    }
+
+    .menu, .usuario {
+        display: none;
+    }
+
+    .menu ul {
+        gap: 1.5rem;
+    }
+
+    .usuario ul {
+        gap: 0.5rem;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+    }
+
+    .menu-footer {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.copyright {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 1.5rem;
+	}
+}
+
+@media (max-width: 468px) {
+    .menu-logo {
+        margin-right: 0.5rem;
+    }
+
+    .contact-info {
+		align-items: center;
+	}
+
+	.menu-footer{
+		grid-template-columns: 1fr;
+	}
+}

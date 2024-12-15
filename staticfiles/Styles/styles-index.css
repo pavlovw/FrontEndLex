@@ -1,0 +1,207 @@
+.banner {
+    overflow: hidden;
+    position: relative;
+}
+
+.banner-container {
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.9);
+}
+
+/* Ajustar posición de caption */
+.carousel-caption h5 {
+    font-size: 3rem;
+}
+
+.carousel-caption p {
+    font-size: 1.5rem;
+}
+
+/* Otros estilos */
+.nosotros-container {
+    background-color: #F2F2F2;
+    padding: 68px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nosotros-container img {
+    max-width: 20%; /* Ajusta este valor según el tamaño que desees */
+    height: auto; /* Mantiene la relación de aspecto */
+    margin-right: 20px; /* Espaciado entre la imagen y el contenido */
+}
+
+.content-nosotros {
+    max-width: 50%;
+}
+
+.content-nosotros h2 {
+    margin-bottom: 20px;
+}
+
+#Servicios {
+    background-color: #F2F2F2;
+    padding-bottom: 4rem;
+}
+
+#Servicios h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.servicios-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.servicio {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 2px;
+    overflow: hidden;
+    height: 441px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.servicio:hover {
+    filter: brightness(1.5);
+}
+
+.servicio h1, .servicio p {
+    color: white;
+    margin: 20px;
+}
+
+.servicio button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.servicio button:hover {
+    color: #ccc;
+}
+
+.btn-sv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.btn-sv button {
+    padding: 1rem;
+    background-color: black;
+    border-radius: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-sv button:hover {
+    padding: 1.7rem;
+    font-size: 0.9rem;
+}
+
+.btn-sv a {
+    text-decoration-line: none;
+    color: white;
+}
+
+@media (max-width: 1024px) {
+    .carousel-caption h5 {
+        font-size: 3rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 866px) {
+    .banner img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        filter: brightness(0.9);
+    }    
+}
+
+@media (max-width: 768px) {
+    .banner {
+        height: 100vh;
+    }
+
+    .carousel-caption h5 {
+        font-size: 3rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1.5rem;
+    }
+
+    .nosotros-container {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .nosotros-container img, .content-nosotros {
+        max-width: 90%;
+    }
+
+    .servicios-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 468px) {
+    .banner {
+        height: 100vh;
+    }
+
+    .nosotros-container img {
+    max-width: 50%; /* Ajusta este valor según el tamaño que desees */
+    height: auto; /* Mantiene la relación de aspecto */
+    margin-right: 20px; /* Espaciado entre la imagen y el contenido */
+    }
+
+    .carousel-caption h5 {
+        font-size: 3rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1.7rem;
+    }
+
+    .nosotros-container img, .content-nosotros {
+        max-width: 100%;
+    }
+
+    .servicios-container {
+        grid-template-columns: 1fr;
+    }
+
+    .servicio {
+        height: 200px;
+    }
+}

@@ -1,0 +1,545 @@
+/* Resetear estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2D2F36;
+    --background-color: #f9f5f0;
+    --dark-color: #151515;
+    --white-color: #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    height: 100vh;
+    overflow-x: hidden; /* Evitar desbordamiento horizontal */
+}
+
+/* NAVBAR TOP*/
+.navbar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-height: 7rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0; /* Ajustar ancho al 100% */
+    background-color: transparent;
+    z-index: 1000;
+    transition: background-color 0.6s;
+}
+
+.navbar-top.scrolled {
+    background-color: var(--primary-color);
+}
+
+.navbar-top.scrolled .menu-logo {
+    color: white;
+}
+
+.navbar.scrolled .btn-menu span {
+    color: white !important;
+}
+
+.menu-logo {
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.user-icon {
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.user-icon i {
+    font-size: 2rem;
+}
+
+/* MENU OVERLAY */
+#btn-menu {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 4rem; /* Ajuste para que el menú esté debajo del navbar */
+    left: 0;
+    right: 0; /* Ajustar ancho al 100% */
+    height: 0;
+    background-color: var(--primary-color);
+    z-index: 999;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+}
+
+.menu-overlay.open {
+    height: calc(100vh - 7rem); /* Altura del 100% del viewport menos la altura del navbar */
+}
+
+.menu-overlay ul {
+    list-style: none;
+    padding: 1rem;
+}
+
+.menu-overlay ul li {
+    margin: 10px 0;
+}
+
+.menu-overlay ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+}
+
+#btn-menu .close-icon {
+    display: none;
+    color: white;
+    font-size: 2rem;
+}
+
+.menu-overlay .close-icon {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white !important;
+    font-size: 2rem !important;
+    cursor: pointer;
+}
+
+/* CONTENIDO PRINCIPAL */
+.container {
+    display: flex;
+    height: calc(100vh - 7rem); /* Altura del 100% del viewport menos la altura del navbar */
+    margin-top: 7rem; /* Ajuste para que el contenido esté debajo del navbar */
+}
+
+.navbar-left {
+    background-color: transparent;
+    width: 20vw; /* Ancho del 20% del viewport */
+    max-width: 260px; /* Ancho máximo */
+    height: 80%;
+    position: absolute;
+     /* Ajuste para que la barra lateral esté debajo del navbar */
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.navbar-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-left ul li {
+    margin-bottom: 2.2rem;
+}
+
+.navbar-left ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    width: 100%;
+    position: relative;
+}
+
+.navbar-left ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.navbar-left ul li a:hover::after {
+    background-color: white;
+}
+
+.navbar-left ul li a.selected::after {
+    background-color: white;
+}
+
+main {
+    margin-left: 20vw; /* Ajuste para que el contenido principal esté al lado de la barra lateral */
+    padding: 2rem;
+    width: calc(80vw - 4rem); /* Ancho del 80% del viewport menos el padding */
+    max-width: calc(100% - 260px - 4rem); /* Ancho máximo */
+    height: 100%;
+    overflow-y: auto; /* Habilitar scroll vertical si es necesario */
+    margin-top: 9rem;
+}
+
+.section {
+    background-color: white;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+}
+
+.section h2 {
+    margin-top: 0;
+}
+
+#tu-cuenta p{
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+#tu-cuenta button{
+    background-color: #333;
+    color: white;
+    border: none;
+    margin-top: 5px;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#tu-cuenta button:hover {
+    background-color: #555;
+}
+
+.card, .causa, .documento {
+    background-color: #f9f9f9;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la tabla de gestionar usuarios */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    overflow-x: auto; /* Scroll horizontal cuando el contenido excede el ancho */
+}
+
+
+#gestionar-causas h2{
+    margin-bottom: 2rem;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border: 0px;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: rgba(211, 211, 211, 0.9); /* Gris claro con opacidad */
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: white;
+}
+
+.edit-button, button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.edit-button, button:hover {
+    background-color: #555;
+}
+
+.edit-button-agregar {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.edit-button-agregar:hover {
+    background-color: #555;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin: 0.5rem 0 0.2rem;
+}
+
+form input {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* ********************************** */
+/*               FOOTER               */
+/* ********************************** */
+
+.footer {
+    background-color: var(--primary-color);
+}
+
+.container-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 3rem;
+    height: 50%;
+}
+
+.menu-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    text-align: center;
+}
+
+.title-footer {
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: white;
+}
+
+.information {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.information ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.information ul li {
+    list-style: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.information ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 300;
+}
+
+.information ul li a:hover {
+    color: var(--dark-color);
+}
+
+.footer .copyright {
+    display: flex;
+    padding-top: 2rem;
+    border-top: 1px solid white;
+}
+
+.footer .copyright p {
+    font-weight: 400;
+    font-size: 1.4rem;
+    margin: 0;
+    width: 100%;
+    color: white;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0 1rem;
+        background-color: var(--primary-color);
+    }
+
+    #btn-menu {
+        display: block;
+    }
+
+    .btn-menu span {
+        color: white !important;
+    }
+
+    .menu-logo {
+        color: white !important;
+    }
+
+    .menu, .usuario {
+        display: none;
+    }
+
+    .menu ul {
+        gap: 1.5rem;
+    }
+
+    .usuario ul {
+        gap: 0.5rem;
+    }
+
+    .navbar-left {
+        display: none; /* Ocultar la barra lateral izquierda */
+    }
+
+    main {
+        margin-left: 0; /* Eliminar el margen izquierdo */
+        width: 100%; /* Ancho completo */
+    }
+}
+
+
+@media(max-width: 600px){
+
+    .container-footer {
+        padding: 1rem;
+        gap: 2rem;
+    }
+
+    .menu-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .information {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer .copyright {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+    }
+
+    .navbar-top {
+        padding: 1rem; /* Reducir el padding del navbar */
+    }
+
+    .menu-overlay.open {
+        height: calc(100vh - 7rem); /* Altura del 100% del viewport menos la altura del navbar */
+    }
+
+    .menu-overlay .close-icon {
+        top: 1rem; /* Ajustar la posición del ícono "x" */
+        right: 1rem;
+    }
+
+    main {
+        margin-left: 0; /* Eliminar el margen izquierdo */
+        width: 100%; /* Ancho completo */
+        max-width: none; /* Eliminar el ancho máximo */
+    }
+
+    .menu-footer {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 1rem;
+    }
+
+    .copyright {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 468px) {
+    .menu-logo {
+        margin-right: 0.5rem;
+    }
+
+    .menu-logo {
+        font-size: 1.8rem; /* Reducir el tamaño del logotipo */
+    }
+
+    .user-icon {
+        width: 40px; /* Reducir el ancho del ícono de usuario */
+        height: 40px;
+    }
+
+    .user-icon i {
+        font-size: 1.5rem; /* Reducir el tamaño del ícono de usuario */
+    }
+
+    .contact-info {
+        align-items: center;
+    }
+
+    .menu-footer {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .table th, .table td {
+        padding: 12px;
+    }
+
+    .edit-button, .edit-button-agregar {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .edit-button, .edit-button-agregar {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .edit-button, .edit-button-agregar {
+        display: block;
+        margin-bottom: 0.5rem !important; /* Espacio entre botones */
+    }
+}
