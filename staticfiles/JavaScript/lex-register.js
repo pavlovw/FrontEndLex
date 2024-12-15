@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             // Realizar la solicitud fetch
-            fetch('http://localhost:8000/api/register/', {
+            fetch('https://web-production-24ee.up.railway.app/register/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
