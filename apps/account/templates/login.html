@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'Styles/styles-login.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="login-section">
+    <div class="page" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{% static "Images/img2.jpg" %}');">
+        <div class="container-page">
+            <div class="left">
+                <div class="login">Iniciar Sesión</div>
+                <div class="eula">Al iniciar sesión, aceptas los términos ridículamente largos que no te molestaste en leer.</div>
+            </div>
+            <div class="right">
+                <form id="login-form" class="form" method="post" action="{% url 'handle_login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Recuérdame</label>
+                    </div>
+                    <input type="submit" id="submit" value="Iniciar Sesión">
+                    <div class="extra-links">
+                        <a href="#">¿Has olvidado tu contraseña?</a>
+                        <a href="{% url 'register' %}">¿No tienes una cuenta? Regístrate aquí</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'JavaScript/login.js' %}"></script>
+{% endblock %}

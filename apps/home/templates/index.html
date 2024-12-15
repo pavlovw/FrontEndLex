@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'Styles/carousel-styles.css' %}">
+<link rel="stylesheet" href="{% static 'Styles/styles-index.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="banner">
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item ">
+                <div class="banner-container" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url({% static 'Images/img1.jpg' %});">
+                    <div class="carousel-caption">
+                        <h5>Lorem ipsum dolor</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="banner-container" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url({% static 'Images/img3.jpg' %});">
+                    <div class="carousel-caption">
+                        <h5>Lorem ipsum dolor</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="banner-container" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url({% static 'Images/img2.jpg' %});">
+                    <div class="carousel-caption">
+                        <h5>Lorem ipsum dolor</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="prev" onclick="moveSlide(1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(-1)">&#10095;</button>
+    </div>
+</section>
+
+<section id="Nosotros">
+    <div class="nosotros-container">
+        <img src="{% static 'images/abg-1.png' %}" alt="Imagen de nosotros">
+        <div class="content-nosotros">
+            <h2>Bienvenido a Lex</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque fuga aliquid quibusdam vel nam iusto eveniet quia temporibus iste eius aut incidunt vitae quod, rerum id architecto earum, totam perferendis?.</p>
+        </div>
+    </div>
+</section>
+
+<section id="Servicios">
+    <h2>SERVICIOS</h2>
+    <div class="servicios-container">
+        <div class="servicio servicio1" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({% static 'Images/img2.jpg' %});">
+            <h1>Servicio 1</h1>
+            <p>Lorem ipsum dolor.</p>
+            <div class="btn-leer"><button>Leer más</button></div>
+        </div>
+        <div class="servicio servicio2" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({% static 'Images/img3.jpg' %});">
+            <h1>Servicio 2</h1>
+            <p>Lorem ipsum dolor.</p>
+            <div class="btn-leer"><button>Leer más</button></div>
+        </div>
+        <div class="servicio servicio3" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({% static 'Images/img4.jpg' %});">
+            <h1>Servicio 3</h1>
+            <p>Lorem ipsum dolor.</p>
+            <div class="btn-leer"><button>Leer más</button></div>
+        </div>
+        <div class="servicio servicio4" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({% static 'Images/img5.jpg' %});">
+            <h1>Servicio 4</h1>
+            <p>Lorem ipsum dolor.</p>
+            <div class="btn-leer"><button>Leer más</button></div>
+        </div>
+    </div>
+    <div class="btn-sv"><button><a href="{% url 'services' %}">Ver Más Servicios</a></button></div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'JavaScript/xd.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,269 @@
+/* Estilos para el formulario de modificar caso */
+
+.error-message {
+    color: rgb(185, 153, 152);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.page {
+    background-size: cover;
+    background-position: center;
+    height: 150vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container-page {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    width: 80%;
+    max-width: 1000px;
+    margin: 20px;
+}
+
+@media (max-width: 767px) {
+    .container-page {
+        flex-direction: column;
+        width: 90%;
+        margin: 10px;
+    }
+}
+
+.left,
+.right {
+    padding: 40px;
+}
+
+.left {
+    background: white;
+}
+
+.right {
+    background: #474a59;
+    color: #f1f1f2;
+    position: relative;
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .left,
+    .right {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+.login {
+    font-size: 50px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.eula {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.form {
+    width: 100%;
+}
+
+pre {
+    color: #c2c2c5;
+    display: block;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="options"] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    color: #f2f2f2;
+    font-size: 15px;
+    height: 30px;
+    outline: none;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="date"]::placeholder,
+input[type="options"] {
+    color: #c2c2c5;
+}
+
+input[type="tel"]:invalid {
+    border-bottom: 1px solid red;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+}
+
+select {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    color: #f2f2f2;
+    font-size: 15px;
+    height: 30px;
+    outline: none;
+    width: 100%;
+    margin-bottom: 20px;
+    appearance: none; /* Elimina el estilo nativo del navegador */
+    -webkit-appearance: none; /* Para navegadores basados en WebKit (Chrome, Safari, etc.) */
+    -moz-appearance: none; /* Para navegadores basados en Gecko (Firefox) */
+    padding: 5px 10px; /* Ajusta el padding según necesites */
+    cursor: pointer;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Agrega una flecha personalizada */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Ajusta la posición de la flecha */
+}
+
+select:focus {
+    border-color: #ffffff; /* Cambia el color del borde al enfocar */
+}
+
+option {
+    background-color: #474a59; /* Color de fondo de las opciones */
+    color: #f2f2f2; /* Color del texto de las opciones */
+}
+
+#submit-button {
+    background: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    color: #707075;
+    margin-top: 30px;
+    transition: color 300ms, border-color 300ms, background-color 300ms;
+    width: 50%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#submit-button:hover {
+    color: #f2f2f2;
+    border-color: #f2f2f2;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#submit-button:focus {
+    color: #f2f2f2;
+}
+
+#submit-button:active {
+    color: #d0d0d2;
+}
+
+.volver-link {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+a {
+    color: #c2c2c5;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.volver-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0 1rem;
+        background-color: var(--primary-color);
+    }
+
+    #btn-menu {
+        display: block;
+    }
+
+    .btn-menu span {
+        color: white !important;
+    }
+
+    .menu-logo {
+        color: white !important;
+    }
+
+    .menu,
+    .usuario {
+        display: none;
+    }
+
+    .menu ul {
+        gap: 1.5rem;
+    }
+
+    .usuario ul {
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .container-page {
+        width: 100%;
+        flex-direction: column;
+        height: auto;
+        box-shadow: none;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .login {
+        font-size: 30px;
+    }
+
+    .eula {
+        font-size: 12px;
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"] {
+        font-size: 16px;
+    }
+
+    #submit {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 468px) {
+    html {
+        font-size: 80%;
+    }
+
+    .menu-logo {
+        margin-right: 0.5rem;
+    }
+}

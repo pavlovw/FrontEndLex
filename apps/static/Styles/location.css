@@ -1,0 +1,76 @@
+/* ********************************** */
+/*               MAP                  */
+/* ********************************** */
+#map {
+    height: 300px; /* Reducido de 500px a 300px */
+    width: 100%; 
+}
+
+/* Estilos para el contenedor de la información del mapa */
+.map-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-column-gap: 5rem; 
+    align-items: start;
+    justify-content: center;
+    padding: 1rem; /* Reducido de 2rem a 1rem */
+    margin-top: 10rem; /* Margen superior ajustado para no dejar un gran espacio */
+    margin-bottom: 10rem;
+}
+
+.map-info {
+    font-size: 1.4rem; /* Reducido de 1.6rem a 1.4rem */
+    margin: 3rem;
+}
+
+.map-info-container:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.buttons-container {
+    margin-top: 1rem;
+}
+
+.order-btn,
+.direction-btn {
+    padding: 0.5rem 1.5rem; /* Reducido de 0.5rem 2rem a 0.5rem 1.5rem */
+    margin-right: 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.order-btn:hover,
+.direction-btn:hover {
+    background-color: var(--dark-color);
+}
+
+
+.page {
+    height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+    .map-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .map-info-container {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .map-info {
+        font-size: 1.2rem; /* Reducido de 1.4rem a 1.2rem */
+    }
+
+    #map {
+        width: 100%;
+        max-width: 400px; /* Reducido de 500px a 400px */
+    }
+}

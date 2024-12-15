@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="{% static 'Styles/styles-account-admin.css' %}">
+</head>
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({% static 'Images/img2.jpg' %});">
+    <header>
+        <nav class="navbar-top" id="navbar">
+            <a href="{% url 'index' %}" style="text-decoration: none; color: inherit;">
+                <div class="menu-logo">LEX</div>
+            </a>
+            <div class="user-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="btn-menu" id="btn-menu">
+                <span class="menu-icon">&#9776;</span> <!-- Icono de menú -->
+            </div>
+        </nav>
+    </header>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#gestionar-usuarios">Gestionar Usuarios</a></li>
+            <li><a href="#gestionar-causas">Gestionar Causas</a></li>
+            <li><a href="#gestionar-contratos">Gestionar Contratos</a></li>
+            <li><a href="#reportes">Reportes</a></li>
+            <li><a href="#actualizar-informacion">Actualizar Información</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <nav class="navbar-left">
+            <ul>
+                <li><a href="#tu-cuenta">Tu Cuenta</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#gestionar-usuarios">Gestionar Usuarios</a></li>
+                <li><a href="#gestionar-causas">Gestionar Causas</a></li>
+                <li><a href="#gestionar-contratos">Gestionar Contratos</a></li>
+                <li><a href="#reportes">Reportes</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="tu-cuenta" class="section">
+                <h2>Tu Cuenta</h2>
+                <div class="card">
+                    <h3>Abogado</h3>
+                        <p>{{ request.user.nombre }}</p>
+                        <button>Editar</button>
+                </div>
+                <div class="card">
+                    <h3>Correo</h3>
+                    <p>{{ request.user.email }}</p> <!-- Asegúrate de que el modelo de usuario tenga un campo 'direccion' -->
+                    <button>Editar</button>
+                </div>
+                <div class="card">
+                    <h3>Teléfono</h3>
+                    <p>{{ request.user.telefono }}</p> <!-- Asegúrate de que el modelo de usuario tenga un campo 'telefono' -->
+                    <button>Editar</button>
+                </div>
+            </section>
+
+            <section id="dashboard" class="section">
+                <h2>Dashboard</h2>
+                <div class="card">
+                    <h3>Resumen de Actividades</h3>
+                    <p>Resumen del estado actual de todas las actividades administrativas.</p>
+                </div>
+                <div class="card">
+                    <h3>Notificaciones</h3>
+                    <p>Últimas notificaciones y actualizaciones importantes.</p>
+                </div>
+            </section>
+
+            <section id="gestionar-usuarios" class="section">
+                <h2>Gestionar Usuarios</h2>
+                <div id="usuarios-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>RUT</th>
+                                <th>Nombre Completo</th>
+                                <th>Email</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for usuario in usuarios %}
+                                <tr id="usuario-{{ usuario.rut }}">
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ usuario.rut }}</td>
+                                    <td>{{ usuario.nombre }}</td>
+                                    <td>{{ usuario.email }}</td>
+                                    <td>
+                                        <a class="edit-button" href="{% url 'search-customer' pk=usuario.rut %}">Editar</a>
+                                        <a class="edit-button" href="{% url 'delete-customer' pk=usuario.rut %}">Eliminar</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="gestionar-causas" class="section">
+                <h2>Gestionar Causas</h2>
+                <div id="usuarios-table">
+                    <a class="edit-button-agregar" href="{% url 'agregar_caso' %}">Agregar Caso</a>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre del Caso</th>
+                                <th>Nombre del Cliente</th>
+                                <th>Abogado</th>
+                                <th>Estado</th>
+                                <th>Fecha de Inicio</th>
+                                <th>Fecha de Fin</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for causa in causas %}
+                            <tr id="causa-{{ causa.id }}">
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ causa.nombre }}</td>
+                                <td>{{ causa.cliente.nombre }}</td>
+                                <td>{{ causa.abogado.nombre }}</td>
+                                <td>{{ causa.estado }}</td>
+                                <td>{{ causa.fecha_inicio }}</td>
+                                <td>{{ causa.fecha_fin }}</td>
+                                <td>
+                                    <a class="edit-button" href="{% url 'editar-causa' pk=causa.id %}">Editar</a>
+                                    <a class="edit-button" href="{% url 'eliminar-causa' pk=causa.id %}">Eliminar</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="gestionar-contratos" class="section">
+                <h2>Gestionar Contratos y Documentos</h2>
+                <div id="usuarios-table">
+                    <a class="edit-button-agregar" href="{% url 'listar_casos' %}">Agregar Contrato</a>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre del Cliente</th>
+                                <th>Nombre del Caso</th>
+                                <th>Costo</th>
+                                <th>Modalidad de Pago</th>
+                                <th>Fecha firma</th>
+                                <th>Fecha de vencimiento</th>
+                                <th>Abogado</th>
+                                <th>Acciones</th> <!-- Agregar la columna de acciones -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for contrato in contratos %}
+                            <tr id="contrato-{{ contrato.id }}">
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ contrato.caso.cliente }}</td>
+                                <td>{{ contrato.caso.nombre }}</td>
+                                <td>{{ contrato.costo }}</td>
+                                <td>{{ contrato.modalidad_pago }}</td>
+                                <td>{{ contrato.fecha_firma }}</td>
+                                <td>{{ contrato.fecha_vencimiento }}</td>
+                                <td>{{ contrato.caso.abogado }}</td>
+                                <td>
+                                    <a class="edit-button" href="{% url 'editar-contrato' pk=contrato.id %}">Editar</a>
+                                    <a class="delete-button" href="{% url 'eliminar-contrato' pk=contrato.id %}">Eliminar</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="reportes" class="section">
+                <h2>Reportes</h2>
+                <div class="card">
+                    <h3>Reporte Financiero</h3>
+                    <button>Generar Reporte</button>
+                </div>
+                <div class="card">
+                    <h3>Reporte de Actividades</h3>
+                    <button>Generar Reporte</button>
+                </div>
+                <!-- Más reportes pueden ser generados aquí -->
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer" id="Contacto">
+        <div class="container container-footer">
+            <div class="menu-footer">
+                <div class="information">
+                    <p class="title-footer">Información</p>
+                    <ul>
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Politicas de Privacidad</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Contactános</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'JavaScript/account-admin.js' %}"></script>
+    <script src="{% static 'JavaScript/script.js' %}"></script>
+    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
+    <script>
+        console.log("RUT del usuario:", "{{ usuario.rut }}");
+        </script>
+</body>
+</html>
+
+

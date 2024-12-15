@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Causas</title>
+    <link rel="stylesheet" href="{% static 'Styles/styles-account-customer.css' %}">
+</head>
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({% static 'Images/img2.jpg' %});">
+    <header>
+        <nav class="navbar-top" id="navbar">
+            <a href="{% url 'index' %}" style="text-decoration: none; color: inherit;">
+                <div class="menu-logo">LEX</div>
+            </a>
+            <div class="user-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="btn-menu" id="btn-menu">
+                <span class="menu-icon">&#9776;</span> <!-- Icono de menú -->
+            </div>
+        </nav>
+    </header>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="#Dashboard">Dashboard</a></li>
+            <li><a href="#mis-causas">Mis Causas</a></li>
+            <li><a href="#actualizar-informacion">Actualizar Información</a></li>
+            <li><a href="#contratos-documentos">Contratos y Documentos</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <nav class="navbar-left">
+            <ul>
+                <li><a href="#tu-cuenta">Tu Cuenta</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#mis-causas">Mis Causas</a></li>
+                <li><a href="#contratos-documentos">Contratos y Documentos</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="tu-cuenta" class="section">
+                <h2>Tu Cuenta</h2>
+                <div class="card">
+                    <h3>Nombre Completo</h3>
+                    <form id="information">
+                        <p>{{ request.user.nombre }}</p>
+                        <button>Editar</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <h3>Fecha de Nacimiento</h3>
+                    <p>{{ request.user.birthdate }}</p> <!-- Asegúrate de que el modelo de usuario tenga un campo 'direccion' -->
+                    <button>Editar</button>
+                </div>
+                <div class="card">
+                    <h3>Teléfono</h3>
+                    <p>{{ request.user.telefono }}</p> <!-- Asegúrate de que el modelo de usuario tenga un campo 'telefono' -->
+                    <button>Editar</button>
+                </div>
+            </section>
+
+            <section id="dashboard" class="section">
+                <h2>Dashboard</h2>
+                <div class="card">
+                    <h3>Estado de las Causas</h3>
+                    <p>Resumen del estado actual de todas sus causas legales.</p>
+                </div>
+                <div class="card">
+                    <h3>Contratos</h3>
+                    <p>Lista de contratos vigentes y pendientes.</p>
+                </div>
+                <div class="card">
+                    <h3>Notificaciones</h3>
+                    <p>Últimas notificaciones y actualizaciones importantes.</p>
+                </div>
+            </section>
+
+            <section id="mis-causas" class="section">
+                <h2>Mis Causas</h2>
+                {% if causas %}
+                    {% for causa in causas %}
+                        <div class="causa">
+                            <h3>{{ causa.nombre }}</h3>
+                            <p>Estado: {{ causa.estado }}</p>
+                            <p>Fecha de Inicio: {{ causa.fecha_inicio }}</p>
+                            <p>Fecha de Término: {{ causa.fecha_fin }}</p>
+                            <p>Abogado: {{ causa.abogado.nombre }}</p>
+                            <form action="{% url 'eliminar-causa' causa.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Eliminar Causa</button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No tienes causas registradas.</p>
+                {% endif %}
+            </section>
+
+            <section id="contratos-documentos" class="section">
+                <h2>Contratos y Documentos</h2>
+                {% if contratos %}
+                    {% for contrato in contratos %}
+                        <div class="contrato">
+                            <h3>{{ contrato.caso.nombre }}</h3>
+                            <p>Estado: {{ contrato.caso.estado }}</p>
+                            <p>Costo: {{ contrato.costo }}</p>
+                            <p>Modalidad de Pago: {{ contrato.modalidad_pago }}</p>
+                            <p>Fecha de Firma: {{ contrato.fecha_firma }}</p>
+                            <p>Fecha de Vencimiento: {{ contrato.fecha_vencimiento }}</p>
+                            <p>Abogado: {{ contrato.caso.abogado.nombre }}</p>
+                            <a href="{% url 'pagar_contrato' contrato_id=contrato.id %}" class="pagar-button">Pagar</a>
+                            <button type="submit">Descargar</button>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No tienes contratos registrados.</p>
+                {% endif %}
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer" id="Contacto">
+        <div class="container container-footer">
+            <div class="menu-footer">
+                <div class="information">
+                    <p class="title-footer">Información</p>
+                    <ul>
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Politicas de Privacidad</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Contactános</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>
+                    LEX CHILE &copy; 2024
+                </p>
+                <img src="{% static 'Img/payment.png' %}" alt="Pagos">
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'JavaScript/account-customer.js' %}"></script>
+    <script src="{% static 'JavaScript/script.js' %}"></script>
+    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
+</body>
+</html>

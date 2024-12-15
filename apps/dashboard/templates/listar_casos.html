@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Casos</title>
+    <link rel="stylesheet" href="{% static 'Styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'Styles/styles-account-admin.css' %}">
+
+</head>
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({% static 'Images/img2.jpg' %});">
+    <header>
+        <!-- Tu header aquí -->
+    </header>
+
+    <main>
+        <section>
+            <h2>Lista de Casos</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre del Caso</th>
+                        <th>Nombre del Cliente</th>
+                        <th>Abogado</th>
+                        <th>Estado</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha de Fin</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for causa in causas %}
+                    <tr id="causa-{{ causa.id }}">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ causa.nombre }}</td>
+                        <td>{{ causa.cliente.nombre }}</td>
+                        <td>{{ causa.abogado.nombre }}</td>
+                        <td>{{ causa.estado }}</td>
+                        <td>{{ causa.fecha_inicio }}</td>
+                        <td>{{ causa.fecha_fin }}</td>
+                        <td>
+                            <a class="btn" href="{% url 'crear_contrato' causa.id %}">Elegir</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Tu footer aquí -->
+    </footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="{% static 'Styles/styles-account-admin.css' %}">
+    <link rel="stylesheet" href="{% static 'Styles/styles-modify-customer.css' %}">
+</head>
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({% static 'Images/img2.jpg' %});">
+    <header>
+        <nav class="navbar-top" id="navbar">
+            <div class="menu-logo">LEX</div>
+            <div class="user-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="btn-menu" id="btn-menu">
+                <span class="menu-icon">&#9776;</span> <!-- Icono de menú -->
+            </div>
+        </nav>
+    </header>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#gestionar-usuarios">Gestionar Usuarios</a></li>
+            <li><a href="#gestionar-causas">Gestionar Causas</a></li>
+            <li><a href="#gestionar-contratos">Gestionar Contratos</a></li>
+            <li><a href="#reportes">Reportes</a></li>
+            <li><a href="#actualizar-informacion">Actualizar Información</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <main>
+            <section class="register-section">
+                    <div class="container-page">
+                        <div class="left">
+                            <div class="login">Modificar Cliente</div>
+                            <div class="eula">Al modificar, aceptas los términos y condiciones de nuestro servicio.</div>
+                        </div>
+                        <div class="right">
+                            <form id="editar-form" method="post" action="{% url 'editar-usuario' %}">
+                                {% csrf_token %}
+                                <pre>Rut: <input type="text" name="rut" id="rut" readonly value="{{usuarios.rut}}"></pre>
+                                <pre>Nombre: <input type="text" name="nombre" id="nombre" value="{{usuarios.nombre}}"></pre>
+                                <pre>Email: <input type="email" name="email" id="email" value="{{usuarios.email}}"></pre>
+                                <input type="submit" name="submit-button" value="Modificar" id="submit-button">
+                            </form>
+                            <a class="volver-link" href="{% url 'account-admin' %}" id="volver-link">Volver</a>               
+                        </div>
+                    </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer" id="Contacto">
+        <div class="container container-footer">
+            <div class="menu-footer">
+                <div class="information">
+                    <p class="title-footer">Información</p>
+                    <ul>
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Politicas de Privacidad</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Contactános</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="{% static 'JavaScript/script.js' %}"></script>
+    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
+    <script>
+        console.log("RUT del usuario:", "{{ usuarios.rut }}");
+        </script>
+</body>
+</html>
+
+

@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}LEX{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'Styles/styles.css' %}">
+    {% block extra_css %}
+    <!-- PLANTILLAS CSS -->
+    {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar" id="navbar">
+            <a href="{% url 'index' %}" style="text-decoration: none; color: inherit;">
+                <div class="menu-logo">LEX</div>
+            </a>
+            <div class="menu">
+                <ul>
+                    <li><a href="{% url 'index' %}">Inicio</a></li>
+                    <li><a href="{% url 'services' %}">Servicios</a></li>
+                    <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+                    <li><a href="{% url 'ubicacion' %}">Ubicacion</a></li>
+                    <li><a href="#Contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="usuario">
+                <ul>
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser or request.user.is_staff %}
+                            <li><a href="{% url 'account-admin' %}">Tu cuenta: {{ request.user.username }}</a></li>
+                        {% else %}
+                            <li><a href="{% url 'account-customer' %}">Tu cuenta: {{ request.user.nombre }} </a></li>
+                        {% endif %}
+                        <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                        <li><a href="{% url 'register' %}">Registrarse</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <div class="btn-menu" id="btn-menu">
+                <span class="menu-icon">&#9776;</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'services' %}">Servicios</a></li>
+            <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+            <li><a href="{% url 'ubicacion' %}">Ubicacion</a></li>
+            <li><a href="#Contacto">Contacto</a></li>
+            <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+            <li><a href="{% url 'register' %}">Registrarse</a></li>
+        </ul>
+    </div>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer" id="Contacto">
+        <div class="container container-footer">
+            <div class="menu-footer">
+                <div class="contact-info">
+                    <p class="title-footer">Información de Contacto</p>
+                    <ul>
+                        <li>Dirección: 71 Pennington Lane Vernon Rockville, CT 06066</li>
+                        <li>Teléfono: 123-456-7890</li>
+                        <li>Fax: 55555300</li>
+                        <li>Email: lex@support.com</li>
+                    </ul>
+                </div>
+                <div class="information">
+                    <p class="title-footer">Información</p>
+                    <ul>
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Políticas de Privacidad</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div class="my-account">
+                    <p class="title-footer">Mi cuenta</p>
+                    <ul>
+                        {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser or request.user.is_staff %}
+                        <li><a href="{% url 'account-admin' %}">Mi cuenta</a></li>
+                        {% else %}
+                        <li><a href="{% url 'account-customer' %}">Mi cuenta</a></li>
+                        {% endif %}
+                        <li><a href="#">Historial de Servicios</a></li>
+                        <li><a href="#">Progresos</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>LEX CHILE &copy; 2024</p>
+                <img src="{% static 'images/payment.png' %}" alt="Pagos">
+            </div>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
+    <script src="{% static 'JavaScript/script.js' %}"></script>
+    <script src="//code.tidio.co/ef3j8sn6unb9yweywpqhxngfbluuc1gr.js" async></script>
+    {% block extra_js %}
+    {% endblock %}
+</body>
+
+</html>

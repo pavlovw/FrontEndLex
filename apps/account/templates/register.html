@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registrarse{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'Styles/styles-register.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="register-section">
+    <div class="page"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{% static "Images/img2.jpg" %}');">
+        <div class="container-page">
+            <div class="left">
+                <div class="login">Registrarse</div>
+                <div class="eula">Al registrarte, aceptas los términos y condiciones de nuestro servicio.</div>
+            </div>
+            <div class="right">
+                <!-- <form id="register-form" class="form" method="post" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" id="submit">Registrarse</button>
+                    <div class="extra-links">
+                        <a href="{% url 'login' %}">¿Ya tienes una cuenta? Inicia sesión aquí</a>
+                    </div>
+                </form> -->
+                <form id="register-form" class="form" method="post" action="{% url 'handle_register' %}">
+                    {% csrf_token %}
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Ingresa tu email">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Ingresa tu nombre de usuario">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre completo">
+                    <label for="telefono">Número de teléfono</label>
+                    <div class="telefono-prefix">+56 9</div>
+                    <input type="tel" id="telefono" name="telefono" placeholder="XXXXXXXX" maxlength="8">
+                    <label for="rut">RUT</label>
+                    <input type="text" id="rut" name="rut" placeholder="Ej. 12345678-9" maxlength="10">
+                    <label for="birthdate">Fecha de Nacimiento</label>
+                    <input type="text" id="birthdate" name="birthdate" placeholder="DD/MM/YYYY" maxlength="10">
+                    <label for="password1">Contraseña</label>
+                    <input type="password" id="password1" name="password1" placeholder="Ingresa una contraseña">
+                    <label for="password2">Confirmar contraseña</label>
+                    <input type="password" id="password2" name="password2" placeholder="Ingresa la misma contraseña">
+                    <button type="submit" id="submit-button">Registrarse</button>
+                    <div class="extra-links">
+                        <a href="{% url 'login' %}">¿Ya tienes una cuenta? Inicia sesión aquí</a>
+                    </div>
+                </form>                
+            </div>
+        </div>
+    </div>
+</section>
+{% if messages %}
+    <div id="message-container">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'JavaScript/lex-register.js' %}"></script>
+{% endblock %}

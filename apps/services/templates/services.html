@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Servicios{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'Styles/styles-services.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section id="Servicios">
+    <h2>SERVICIOS</h2>
+    <div class="servicios-container">
+        <div class="servicio-row">
+            <div class="servicio servicio1" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{% static "Images/img2.jpg" %}');"></div>
+            <div class="servicio-text">
+                <h1>Causas de Familia</h1>
+                <p>Asesoría y representación en casos de divorcio, custodia de hijos, pensión alimenticia y más. Nuestro equipo de abogados expertos en derecho de familia trabaja para proteger sus derechos y alcanzar soluciones favorables en situaciones sensibles y complejas.</p>
+                <div class="btn-leer">
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'solicitar_servicio' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="caso_nombre" value="Causas de Familia">
+                            <button type="submit">Solicitar Servicio</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'login' %}"><button type="submit">Solicitar Servicio</button></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="servicio-row">
+            <div class="servicio servicio2" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{% static "Images/img3.jpg" %}');"></div>
+            <div class="servicio-text">
+                <h1>Causas Civiles</h1>
+                <p>Defensa y representación en conflictos civiles, contratos, herencias y otros. Proveemos asistencia legal integral en disputas civiles, asegurando la defensa de sus intereses y ofreciendo soluciones efectivas en litigios y negociaciones.</p>
+                <div class="btn-leer">
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'solicitar_servicio' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="caso_nombre" value="Causas Civiles">
+                            <button type="submit">Solicitar Servicio</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'login' %}"><button type="submit">Solicitar Servicio</button></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="servicio-row">
+            <div class="servicio servicio3" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{% static "Images/img4.jpg" %}');"></div>
+            <div class="servicio-text">
+                <h1>Causas Inmobiliarias</h1>
+                <p>Asistencia legal en transacciones inmobiliarias, arrendamientos y litigios. Facilitamos procesos de compraventa, resolución de conflictos entre arrendadores e inquilinos, y representación en disputas legales inmobiliarias.</p>
+                <<div class="btn-leer">
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'solicitar_servicio' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="caso_nombre" value="Causas Inmobiliarias">
+                            <button type="submit">Solicitar Servicio</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'login' %}"><button type="submit">Solicitar Servicio</button></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="servicio-row">
+            <div class="servicio servicio4" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{% static "Images/img5.jpg" %}');"></div>
+            <div class="servicio-text">
+                <h1>Salud</h1>
+                <p>Representación en casos relacionados con seguros de salud y demandas contra ISAPRES. Ofrecemos defensa jurídica para asegurar el cumplimiento de sus derechos en temas de cobertura de salud y conflictos con aseguradoras.</p>
+                <div class="btn-leer">
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'solicitar_servicio' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="caso_nombre" value="Salud">
+                            <button type="submit">Solicitar Servicio</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'login' %}"><button type="submit">Solicitar Servicio</button></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="servicio-row">
+            <div class="servicio servicio5" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{% static "Images/img1.jpg" %}');"></div>
+            <div class="servicio-text">
+                <h1>Tránsito</h1>
+                <p>Defensa en infracciones de tránsito, accidentes y otros asuntos relacionados. Nuestro equipo legal especializado le ayudará a enfrentar multas, defenderse en casos de accidentes y resolver otros problemas de tránsito.</p>
+                <div class="btn-leer">
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'solicitar_servicio' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="caso_nombre" value="Tránsito">
+                            <button type="submit">Solicitar Servicio</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'login' %}"><button type="submit">Solicitar Servicio</button></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

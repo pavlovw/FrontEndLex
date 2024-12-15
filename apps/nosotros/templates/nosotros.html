@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'Styles/us.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section id="Nosotros">
+    <div class="nosotros-container">
+        <div class="nosotros-header">
+            <h1>Equipo de abogados<br> <span></span> de lex</h1>
+            <p>En Lex, nuestro galardonado equipo de abogados trabaja en conjunto para desarrollar estrategias efectivas para cada caso. Nos aseguramos de colaborar en su caso, sin importar cuán complejo o sencillo sea, para lograr los mejores resultados posibles y proporcionar a nuestros clientes la confianza de que cuentan con un equipo dedicado, no solo un abogado individual. 
+
+                Nuestros abogados son seleccionados en función de la calidad de su trabajo, su inteligencia y su compromiso con la ayuda a las personas. El proceso de contratación es riguroso y extenso, garantizando así que nuestra firma mantenga la excelente reputación que hemos trabajado arduamente para construir a lo largo de los años. 
+        
+                Nuestros abogados especializados en derecho familiar e inmigración operan desde nuestras oficinas en Ciudad de México y Guadalajara. Haga clic en las fotos individuales para conocer más sobre nuestros abogados. Gracias por elegirnos para representarlo.</p>
+                        </div>
+        <div class="team">
+            <div class="team-member">
+                <img src="{% static 'images/abg-1.png' %}" alt="Leena R. Yousefi">
+                <h3>Alejandro Martínez</h3>
+                <p>| ABOGADO | </p>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/abg-6.png' %}" alt="Trudy Hopman">
+                <h3>Javier Ramírez</h3>
+                <p>| ABOGADO |</p>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/abg-4.png' %}" alt="Ari Wormeli">
+                <h3>Fernando López</h3>
+                <p>| ABOGADO |</p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<section id="Nosotros">
+        <div class="team">
+            <div class="team-member">
+                <img src="{% static 'images/abg-5.png' %}" alt="Leena R. Yousefi">
+                <h3>Isabel Fernández</h3>
+                <p>| ABOGADO |</p>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/abg-7.png' %}" alt="Trudy Hopman">
+                <h3>Carlos Herrera</h3>
+                <p>| TECNICO JURIDICO |</p>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/abg-8.png' %}" alt="Ari Wormeli">
+                <h3>Laura González</h3>
+                <p>| TECNICO JURIDICO |</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="CollageSection">
+    <div class="collage-container">
+        <div class="collage-header">
+            <H3>En Lex, nos apasiona ofrecer soluciones legales que transformen vidas. Explora nuestra página para conocer a nuestro dedicado equipo de abogados, los servicios especializados que ofrecemos, y cómo podemos ayudarte a alcanzar tus objetivos legales con confianza y seguridad. ¡Descubre más y déjanos ser tu aliado legal de confianza!</H3>
+        </div>
+        <div class="gallery">
+            <img src="{% static 'images/img7.jpg' %}" alt="Image 1" class="gallery-img-1">
+            <img src="{% static 'images/img2.jpg' %}" alt="Image 2" class="gallery-img-2">
+            <img src="{% static 'images/img6.jpg' %}" alt="Image 3" class="gallery-img-3">
+            <img src="{% static 'images/img4.jpg' %}" alt="Image 4" class="gallery-img-4">
+         
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

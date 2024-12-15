@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Caso</title>
+    <link rel="stylesheet" href="{% static 'Styles/styles-account-admin.css' %}">
+    <link rel="stylesheet" href="{% static 'Styles/styles-modify-caso.css' %}">
+</head>
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({% static 'Images/img2.jpg' %});">
+    <header>
+        <nav class="navbar-top" id="navbar">
+            <div class="menu-logo">LEX</div>
+            <div class="user-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="btn-menu" id="btn-menu">
+                <span class="menu-icon">&#9776;</span> <!-- Icono de menú -->
+            </div>
+        </nav>
+    </header>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#gestionar-usuarios">Gestionar Usuarios</a></li>
+            <li><a href="#gestionar-causas">Gestionar Causas</a></li>
+            <li><a href="#gestionar-contratos">Gestionar Contratos</a></li>
+            <li><a href="#reportes">Reportes</a></li>
+            <li><a href="#actualizar-informacion">Actualizar Información</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <main>
+            <section class="register-section">
+                <div class="container-page">
+                    <div class="left">
+                        <div class="login">Agregar Contrato</div>
+                        <div class="eula">Al agregar, aceptas los términos y condiciones de nuestro servicio.</div>
+                    </div>
+                    <div class="right">
+                        <h2>Crear Contrato</h2>
+                        <form action="{% url 'crear_contrato' caso.id %}" method="post">
+                            {% csrf_token %}
+                            <div>
+                                <label for="cliente">Cliente:</label>
+                                <input type="text" id="cliente" value="{{ caso.cliente.nombre }}" disabled>
+                            </div>
+                            <div>
+                                <label for="caso">Caso:</label>
+                                <input type="text" id="caso" value="{{ caso.nombre }}" disabled>
+                            </div>
+                            <div>
+                                <label for="abogado">Abogado:</label>
+                                <input type="text" id="abogado" value="{{ caso.abogado.nombre }}" disabled>
+                            </div>
+                            {{ form.as_p }}
+                            <button type="submit">Crear Contrato</button>
+                        </form>   
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="footer" id="Contacto">
+        <div class="container container-footer">
+            <div class="menu-footer">
+                <div class="information">
+                    <p class="title-footer">Información</p>
+                    <ul>
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Politicas de Privacidad</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Contactános</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'JavaScript/script.js' %}"></script>
+    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+

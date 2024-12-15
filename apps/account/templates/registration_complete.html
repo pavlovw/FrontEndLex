@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registrarse{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'Styles/styles-registration_complete.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="register-complete-section">
+    <div class="page" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{% static "Images/img2.jpg" %}');">
+        <div class="container-page">
+            <div class="left">
+                <div class="login">Registro Completo</div>
+                <div class="eula">Tu cuenta ha sido creada exitosamente. Ahora puedes iniciar sesión.</div>
+            </div>
+            <div class="right">
+                <div class="extra-links">
+                    <a href="{% url 'login' %}">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% if messages %}
+    <div id="message-container">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'JavaScript/lex-register.js' %}"></script>
+{% endblock %}
+
+

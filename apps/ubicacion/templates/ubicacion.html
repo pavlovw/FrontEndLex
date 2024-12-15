@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ubicacion{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'Styles/location.css' %}">
+<link rel="stylesheet" href="{% static 'Styles/Styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url({% static 'Images/img2.jpg' %});">
+    <section class="map-container" >
+        <div class="contenido-map">
+            <div class="map-info-container">
+                <div class="map-info">
+                    <h2>Dirección del local</h2>
+                    <p>Dirección: Antonio Varas 666</p>
+                    <p>Comuna: Providencia Santiago</p>
+                    <p>Región: Región Metropolitana</p>
+                    <div class="buttons-container">
+                        <a href="{% url 'nosotros' %}"   class="order-btn">Sobre Nosotros</a >
+                        <a href="https://www.google.com/maps/dir//Duoc+UC:+Antonio+Varas+-+Antonio+Varas+666,+Providencia,+Regi%C3%B3n+Metropolitana/@-33.4337222,-70.6155589,17z/data=!4m17!1m7!3m6!1s0x9662cf7b8af466fd:0xc8fd2d768e783103!2sDuoc+UC:+Antonio+Varas!8m2!3d-33.4330059!4d-70.6149044!16s%2Fg%2F1tslkybh!4m8!1m0!1m5!1m1!1s0x9662cf7b8af466fd:0xc8fd2d768e783103!2m2!1d-70.6149044!2d-33.4330059!3e3?entry=ttu" class="direction-btn">Conseguir dirección</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-info-container">
+                <div class="map-info">
+                    <h2>Dirección del local</h2>
+                    <p>Dirección: San Carlos de Apoquindo</p>
+                    <p>Comuna: Las Condes</p>
+                    <p>Región: Región Metropolitana</p>
+                    <div class="buttons-container">
+                        <a href="{% url 'nosotros' %}" class="order-btn">Sobre Nosotros</a>
+                        <a href="https://www.google.com/maps/dir//Duoc+UC+-+Cam.+El+Alba+12881,+Las+Condes,+Regi%C3%B3n+Metropolitana/@-33.4003253,-70.5081805,17z/data=!4m17!1m7!3m6!1s0x9662cc15795f8555:0x78594ceeb4b0b1b5!2sDuoc+UC!8m2!3d-33.4003253!4d-70.5056056!16s%2Fg%2F122nhz_k!4m8!1m0!1m5!1m1!1s0x9662cc15795f8555:0x78594ceeb4b0b1b5!2m2!1d-70.5056056!2d-33.4003253!3e3?entry=ttu" class="direction-btn">Conseguir dirección</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="map"></div>
+    </section>
+</body>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'JavaScript/ubicacion.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
+{% endblock %}
