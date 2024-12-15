@@ -23,7 +23,7 @@ def handle_register(request):
     if request.method == 'POST':
         try:
             # Endpoint de tu backend API para registro
-            response = requests.post('https://tu-backend-api.com/api/register/', json=request.POST)
+            response = requests.post('http://localhost:8000/register/', json=request.POST)
             
             if response.status_code == 201:
                 messages.success(request, '¡Registro exitoso!')
