@@ -22,9 +22,11 @@ def registration_complete(request):
 def handle_register(request):
     if request.method == 'POST':
         try:
-            # Endpoint de tu backend API para registro
-            response = requests.post('http://localhost:8000/register/', json=request.POST)
-            
+            # Cambia localhost al dominio de Railway
+            response = requests.post(
+                'https://web-production-24ee.up.railway.app/register/', 
+                json=request.POST
+            )
             if response.status_code == 201:
                 messages.success(request, '¡Registro exitoso!')
                 return redirect('registration_complete')
@@ -35,30 +37,28 @@ def handle_register(request):
                     for error in error_list:
                         messages.error(request, f"Error en {field}: {error}")
                 return redirect('register')
-        
-        except requests.exceptions.RequestException as e:
+        except requests.exceptions.RequestException:
             messages.error(request, 'Error de conexión. Intente nuevamente.')
             return redirect('register')
 
 def handle_login(request):
     if request.method == 'POST':
         try:
-            # Endpoint de tu backend API para login
-            response = requests.post('https://tu-backend-api.com/api/login/', json=request.POST)
-            
+            # Cambia localhost al dominio de Railway
+            response = requests.post(
+                'https://web-production-24ee.up.railway.app/api/login/', 
+                json=request.POST
+            )
             if response.status_code == 200:
-                # Manejar token de autenticación
+                # Manejo del token de autenticación
                 token = response.json().get('token')
-                # Guardar token en sesión o cookies
-                request.session['auth_token'] = token
+                request.session['auth_token'] = token  # Guardar token
                 return redirect('index')
             else:
-                # Maneja errores de la API
                 errors = response.json().get('errors', {})
                 for error in errors:
                     messages.error(request, error)
                 return redirect('login')
-        
-        except requests.exceptions.RequestException as e:
+        except requests.exceptions.RequestException:
             messages.error(request, 'Error de conexión. Intente nuevamente.')
             return redirect('login')
