@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('register-form');
 
     form.addEventListener('submit', function (event) {
-        event.preventDefault();
+        event.preventDefault();  // Previene el envío tradicional del formulario
         clearErrors();
 
         let isValid = true;
@@ -15,8 +15,38 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!validateBirthdate()) isValid = false;
         if (!validatePassword()) isValid = false;
 
+        // Si todos los campos son válidos, se envía la solicitud con fetch
         if (isValid) {
-            form.submit();
+            // Obtener los datos del formulario
+            const formData = {
+                email: document.getElementById('email').value,
+                username: document.getElementById('username').value,
+                nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value,
+                rut: document.getElementById('rut').value,
+                birthdate: document.getElementById('birthdate').value,
+                password1: document.getElementById('password1').value,
+                password2: document.getElementById('password2').value,
+            };
+
+            // Realizar la solicitud fetch
+            fetch('http://localhost:8000/api/register/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),  // Enviar los datos como JSON
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Manejar la respuesta aquí, por ejemplo, mostrar un mensaje de éxito
+                console.log('Registro exitoso:', data);
+                // Redirigir a otra página o mostrar un mensaje de éxito
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Mostrar mensaje de error en caso de fallo
+            });
         }
     });
 
@@ -163,12 +193,4 @@ document.addEventListener('DOMContentLoaded', function () {
             return S ? S - 1 : 'k';
         }
     };
-
-    const messageContainer = document.getElementById('message-container');
-    if (messageContainer) {
-        const messages = messageContainer.querySelectorAll('.message');
-        messages.forEach(message => {
-            console.log(message.textContent);
-        });
-    }
 });

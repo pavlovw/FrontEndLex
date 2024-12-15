@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'apps.nosotros',
     'apps.services',
     'apps.ubicacion',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True  # Para permitir todos los orígenes, o configura según necesites.
 
 ROOT_URLCONF = 'sitiolex.urls'
 
